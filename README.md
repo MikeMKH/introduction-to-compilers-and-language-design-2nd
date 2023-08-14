@@ -1,2 +1,3 @@
 # introduction-to-compilers-and-language-design-2nd
-Daily kata from Introduction to Compilers and Language Design 2nd edition
+Examples from Introduction to Compilers and Language Design 2nd edition
+Prof. Douglas Thain https://www3.nd.edu/~dthain/compilerbook/compilerbook.pdf
