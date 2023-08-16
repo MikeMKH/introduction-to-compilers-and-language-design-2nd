@@ -1,0 +1,15 @@
+⋊> ~/K/i/ch02 on main ◦ gcc -E hello.c -o hello.i                                                                         06:18:12
+⋊> ~/K/i/ch02 on main ◦ gcc -S hello.i                                                                                    06:18:18
+⋊> ~/K/i/ch02 on main ◦ gcc -c hello.s                                                                                    06:18:26
+⋊> ~/K/i/ch02 on main ◦ gcc hello.o -o hello                                                                              06:18:54
+⋊> ~/K/i/ch02 on main ◦ ./hello                                                                                           06:19:06
+Hello world!
+2 * 4 = 8⏎ 
+
+⋊> ~/K/i/ch02 on main ◦ gcc -E hello.c -o hello-O3.i -O3                                                                  06:19:14
+⋊> ~/K/i/ch02 on main ◦ gcc -S hello-O3.i -o hello-O3.s -O3                                                               05:51:15
+⋊> ~/K/i/ch02 on main ◦ gcc -c hello-O3.s -o hello-O3.o -O3                                                               05:52:27
+⋊> ~/K/i/ch02 on main ◦ gcc hello-O3.o -o hello-O3 -O3                                                                    05:54:55
+⋊> ~/K/i/ch02 on main ◦ ./hello-O3                                                                                        05:55:43
+Hello world!
+2 * 4 = 8⏎   
