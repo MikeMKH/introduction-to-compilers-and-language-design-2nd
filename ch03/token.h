@@ -1,0 +1,9 @@
+typedef enum
+{
+  TOKEN_EOF = 0,
+  TOKEN_WHILE,
+  TOKEN_ADD,
+  TOKEN_LETTER,
+  TOKEN_NUMBER,
+  TOKEN_OTHER
+} token_t;
