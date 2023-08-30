@@ -3,6 +3,11 @@
 ##
 ## Get latest from https://github.com/github/gitignore/blob/main/VisualStudio.gitignore
 
+# examples
+ch04/*.yacc.*
+ch04/*.lex.*
+ch04/boolean_parser
+
 # User-specific files
 *.rsuser
 *.suo
