@@ -1,0 +1,37 @@
+⋊> ~/K/i/c/validator on main ◦ make calc                                                                            06:14:50
+cc    -c -o main.o main.c
+bison --defines=parser.h --output=parser.c -v calc.y
+flex -oscanner.c calc.l
+cc    -c -o scanner.o scanner.c
+cc    -c -o parser.o parser.c
+gcc main.o scanner.o parser.o -o calc -lm
+⋊> ~/K/i/c/validator on main ◦ ./calc                                                                               06:15:42
+***Expression Validator***
+Enter an infix expression using the operators +-*/() ending with ;
+
+1+2*3/4-(567.890);
+scan error: bad token: .
+parse error: syntax error
+Parse failed.
+⋊> ~/K/i/c/validator on main ◦ ./calc                                                                               06:16:12
+***Expression Validator***
+Enter an infix expression using the operators +-*/() ending with ;
+
+1+2-3*4/(567890);
+Parse successful!
+⋊> ~/K/i/c/validator on main ◦ ./calc                                                                               06:16:39
+***Expression Validator***
+Enter an infix expression using the operators +-*/() ending with ;
+
+123 - (
+  456 / 789
+) + 101112 * (13 * 14 * 15)+(16-17+18-19)
+;
+Parse successful!
+⋊> ~/K/i/c/validator on main ◦ ./calc                                                                               06:17:55
+***Expression Validator***
+Enter an infix expression using the operators +-*/() ending with ;
+
+a+b;
+parse error: syntax error
+Parse failed.
