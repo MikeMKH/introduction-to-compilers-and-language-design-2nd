@@ -1,0 +1,36 @@
+⋊> ~/K/i/c/expression on main ⨯ make calc                                                                           06:18:19
+gcc -Wall -c main.c -o main.o
+gcc -Wall -c expr.c -o expr.o
+bison --defines=parser.h --output=parser.c -v calc.y
+flex -oscanner.c calc.l
+gcc -Wall -c scanner.c -o scanner.o
+gcc -Wall -c parser.c -o parser.o
+gcc main.o expr.o scanner.o parser.o -o calc -lm
+⋊> ~/K/i/c/expression on main ⨯ ./calc                                                                              06:18:26
+***Expression Compiler***
+Enter an infix expression using the operators +-*/() ending with ;
+
+((1+2)-3)*(20/4);
+((((1)+(2))-(3))*((20)/(4)))
+ = 0
+⋊> ~/K/i/c/expression on main ⨯ ./calc                                                                              06:19:22
+***Expression Compiler***
+Enter an infix expression using the operators +-*/() ending with ;
+
+-1 + 11 * 4;
+(((0)-(1))+((11)*(4)))
+ = 43
+⋊> ~/K/i/c/expression on main ⨯ ./calc                                                                              06:20:10
+***Expression Compiler***
+Enter an infix expression using the operators +-*/() ending with ;
+
+(-1 + 11) * 4;
+((((0)-(1))+(11))*(4))
+ = 40
+ ⋊> ~/K/i/c/expression on main ⨯ ./calc                                                                              06:20:33
+***Expression Compiler***
+Enter an infix expression using the operators +-*/() ending with ;
+
+-(1);
+((0)-(1))
+ = -1
