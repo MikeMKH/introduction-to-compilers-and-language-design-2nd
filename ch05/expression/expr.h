@@ -10,17 +10,17 @@ typedef enum {
 } expr_t;
 
 struct expr {
-       expr_t kind;
-       int value;
-       struct expr *left;
-       struct expr *right;
+  expr_t kind;
+  int value;
+  struct expr *left;
+  struct expr *right;
 };
 
-struct expr * expr_create( expr_t kind, struct expr *left, struct expr *right );
-struct expr * expr_create_value( int value );
+struct expr* expr_create(expr_t kind, struct expr *left, struct expr *right);
+struct expr* expr_create_value(int value);
 
-void          expr_print( struct expr *e );
-void          expr_delete( struct expr *e );
-int           expr_evaluate( struct expr *e );
+void expr_print(struct expr *e);
+void expr_delete(struct expr *e);
+int  expr_evaluate(struct expr *e);
 
 #endif

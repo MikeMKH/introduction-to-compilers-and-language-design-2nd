@@ -4,12 +4,11 @@
 #include <stdlib.h>
 
 /*
-Create one node in an expression tree and return the structure.
+  create one node in an expression tree
 */
 
-struct expr * expr_create( expr_t kind, struct expr *left, struct expr *right )
+struct expr* expr_create(expr_t kind, struct expr *left, struct expr *right)
 {
-	/* Shortcut: sizeof(*e) means "the size of what e points to" */
 	struct expr *e = malloc(sizeof(*e));
 
 	e->kind = kind;
@@ -20,7 +19,11 @@ struct expr * expr_create( expr_t kind, struct expr *left, struct expr *right )
 	return e;
 }
 
-struct expr * expr_create_value( int value )
+/*
+  create one leaf with the given value  
+*/
+
+struct expr* expr_create_value(int value)
 {
 	struct expr *e = expr_create(EXPR_VALUE,0,0);
 	e->value = value;
@@ -28,12 +31,11 @@ struct expr * expr_create_value( int value )
 }
 
 /*
-Recursively delete an expression tree.
+  recursively delete an expression tree
 */
 
-void expr_delete( struct expr *e )
+void expr_delete(struct expr *e)
 {
-	/* Careful: Stop on null pointer. */
 	if(!e) return;
 	expr_delete(e->left);
 	expr_delete(e->right);
@@ -41,14 +43,11 @@ void expr_delete( struct expr *e )
 }
 
 /*
-Recursively print an expression tree by performing an
-in-order traversal of the tree, printing the current node
-between the left and right nodes.
+  recursively print an expression tree by in-order traversal
 */
 
-void expr_print( struct expr *e )
+void expr_print(struct expr *e)
 {
-	/* Careful: Stop on null pointer. */
 	if(!e) return;
 
 	printf("(");
@@ -78,13 +77,11 @@ void expr_print( struct expr *e )
 }
 
 /*
-Recursively evaluate an expression by performing
-the desired operation and returning it up the tree.
+  recursively evaluate an expression by performing the desired operation and returning value to tree
 */
 
-int expr_evaluate( struct expr *e )
+int expr_evaluate(struct expr *e)
 {
-	/* Careful: Return zero on null pointer. */
 	if(!e) return 0;
 
 	int l = expr_evaluate(e->left);
@@ -92,17 +89,17 @@ int expr_evaluate( struct expr *e )
 
 	switch(e->kind) {
 		case EXPR_ADD:
-			return l+r;
+			return l + r;
 		case EXPR_SUBTRACT:
-			return l-r;
+			return l - r;
 		case EXPR_MULTIPLY:
-			return l*r;
+			return l * r;
 		case EXPR_DIVIDE:
 			if(r==0) {
 				printf("runtime error: divide by zero\n");
 				exit(1);
 			}
-			return l/r;	
+			return l / r;	
 		case EXPR_VALUE:
 			return e->value;
 	}
