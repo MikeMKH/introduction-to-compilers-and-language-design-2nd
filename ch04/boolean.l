@@ -1,18 +1,27 @@
 %{
 #include <stdbool.h>
-#include "boolean.yacc.h" // Include the generated Bison header
+#include "parser.h"
 %}
 
-%%
-
-"true"      { yylval.boolean_value = true; return TRUE; }
-"false"     { yylval.boolean_value = false; return FALSE; }
-"and"       { return AND; }
-"or"        { return OR; }
-"=>"        { return IMPLIES; }
-"("         { return '('; }
-")"         { return ')'; }
-[ \t\n]     ; // Skip whitespace and newline characters
-.           { return yytext[0]; } // Return any other character as is
+%option nounput
+%option noinput
 
 %%
+
+"true"      { return TOKEN_TRUE; }
+"false"     { return TOKEN_FALSE; }
+"and"       { return TOKEN_AND; }
+"or"        { return TOKEN_OR; }
+"->"        { return TOKEN_IMPLIES; }
+"("         { return TOKEN_LEFT_PAREN; }
+")"         { return TOKEN_RIGHT_PAREN; }
+";"         { return TOKEN_SEMI; }
+[ \t\n]     ; // skip whitespace and newline characters
+.           { return yytext[0]; } // return any other character as is
+
+%%
+
+int yywrap()
+{
+	return 0;
+}
