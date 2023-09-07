@@ -1,5 +1,6 @@
 %token TOKEN_TRUE
 %token TOKEN_FALSE
+%token TOKEN_NOT
 %token TOKEN_OR
 %token TOKEN_AND
 %token TOKEN_IMPLIES
@@ -29,10 +30,11 @@ program : expr TOKEN_SEMI { result = $1; return 0; }
 
 expr: TOKEN_TRUE                              { $$ = true; }
   | TOKEN_FALSE                               { $$ = false; }
+  | TOKEN_NOT expr                            { $$ = !($2); }
   | expr TOKEN_AND expr                       { $$ = $1 && $3; }
   | expr TOKEN_OR expr                        { $$ = $1 || $3; }
   | expr TOKEN_IMPLIES expr                   { $$ = !$1 || $3; }
-  | TOKEN_LEFT_PAREN expr TOKEN_RIGHT_PAREN { $$ = $2; }
+  | TOKEN_LEFT_PAREN expr TOKEN_RIGHT_PAREN   { $$ = $2; }
   ;
 
 %%

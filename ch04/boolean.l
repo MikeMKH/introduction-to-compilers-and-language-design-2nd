@@ -10,6 +10,7 @@
 
 "true"      { return TOKEN_TRUE; }
 "false"     { return TOKEN_FALSE; }
+"not"      { return TOKEN_NOT; }
 "and"       { return TOKEN_AND; }
 "or"        { return TOKEN_OR; }
 "->"        { return TOKEN_IMPLIES; }
