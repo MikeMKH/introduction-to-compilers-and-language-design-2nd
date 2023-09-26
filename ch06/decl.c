@@ -22,7 +22,7 @@ void decl_print(struct decl *d, int indent )
   printf("%*s: ", indent, d->name);
   type_print(d->type);
   if (d->value) { printf(" = "); expr_print(d->value); }
-  if (d->code) { printf(" { "); stmt_print(d->code); printf(" }"); }
+  if (d->code) { printf(" { "); stmt_print(d->code, indent*2); printf(" }"); }
   printf("\n");
   decl_print(d->next, indent);
 }
