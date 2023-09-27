@@ -7,11 +7,18 @@ typedef enum {
   EXPR_ADD,
   EXPR_SUB,
   EXPR_MUL,
-  EXPR_DIV
+  EXPR_DIV,
+  EXPR_NAME,
+  EXPR_INT,
+  EXPR_BOOL,
+  EXPR_CHAR,
+  EXPR_STR
 } expr_t;
 
 struct expr {
   expr_t kind;
+  
+  /* used by operators exprs */
   struct expr *left;
   struct expr *right;
   

@@ -7,6 +7,7 @@ struct stmt * stmt_create(
   struct expr *init_expr, struct expr *expr, struct expr *next_expr,
   struct stmt *body, struct stmt *else_body, struct stmt *next) {
     struct stmt *s = malloc(sizeof(*s));
+    
     s->kind = kind;
     s->decl = decl;
     s->init_expr = init_expr;
@@ -15,6 +16,8 @@ struct stmt * stmt_create(
     s->body = body;
     s->else_body = else_body;
     s->next = next;
+    
+    return s;
   }
   
 void stmt_print(struct stmt *s, int indent) {
@@ -65,7 +68,8 @@ void stmt_print(struct stmt *s, int indent) {
       printf("}");
     default: 
       break;
-    printf("\n");
-    stmt_print(s->next, indent);
   }
+  
+  printf("\n");
+  stmt_print(s->next, indent);
 }
