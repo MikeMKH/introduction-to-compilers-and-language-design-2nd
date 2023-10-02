@@ -1,6 +1,7 @@
 #include "param_list.h"
 #include "type.h"
 #include <stdio.h>
+#include <stdlib.h>
 
 struct param_list * param_list_create(char *name, struct type *type, struct param_list *next) {
   struct param_list *a = malloc(sizeof(*a));
@@ -15,7 +16,7 @@ struct param_list * param_list_create(char *name, struct type *type, struct para
 void param_list_print(struct param_list *a) {
   if (!a) return;
   
-  printf("%s: ");
+  printf("%s: ", a->name);
   type_print(a->type);
   
   if (!a->next) return;

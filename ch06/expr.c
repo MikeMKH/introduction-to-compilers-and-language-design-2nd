@@ -1,5 +1,6 @@
 #include "expr.h"
 #include <stdio.h>
+#include <stdlib.h>
 
 struct expr * expr_create(expr_t kind, struct expr *left, struct expr *right) {
   struct expr *e = malloc(sizeof(*e));

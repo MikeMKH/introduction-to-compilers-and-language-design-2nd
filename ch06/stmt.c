@@ -1,6 +1,7 @@
 #include "stmt.h"
 #include "expat.h"
 #include <stdio.h>
+#include <stdlib.h>
 
 struct stmt * stmt_create(
   stmt_t kind, struct decl *decl,
@@ -26,10 +27,10 @@ void stmt_print(struct stmt *s, int indent) {
   switch (s->kind)
   {
     case STMT_DECL:
-      stmt_print(s->decl, indent);
+      decl_print(s->decl, indent);
       break;
     case STMT_EXPR:
-      expr_print(s->decl);
+      expr_print(s->expr);
       break;
     case STMT_IF_ELSE:
       for(int i; i < indent; i++) printf(" ");
